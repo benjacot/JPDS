@@ -1,29 +1,45 @@
-class selectionSort {
+class SelectionSort {
 
   public static void main(String[] args) {
-    int[] A = {17, 4, 9, 3, 5, 6, 11, 20};
-    selectionSort(A);
+    // unsorted array A
+    int[] A = {7, 4, 11, 19, 22, 1};
+    // sends A to sort(int[] A)
+    sort(A);
   }
 
-  public static void selectionSort(int[] A) {
-    // set for loop to iterate over A
-    for (int i = 0; i < A.length; i++) {
-      // set first unsorted element as minimum
+  public static void sort(int[] A) {
+
+    // set up for loop for sorting algorithm
+    for (int i = 0; i < A.length - 1; i++) {
+
+      // initialize pointer index, currentMin, and minIndex
+      int pointerVal = A[i];
       int currentMin = A[i];
-      // initialize for loop to check for true currentMin
-      // initialize mindIndex to keep location of currentMin
       int minIndex = i;
-      for (int j = i + 1; j < A.length; i++) {
+
+      // set up for loop to check for true currentMin
+      for (int j = i+1; j < A.length; j++) {
         if (A[j] < currentMin) {
           minIndex = j;
           currentMin = A[j];
         }
       }
-      // swap currentMin with first unsorted position
-      int swapValue = A[i];
-      A[i] = currentMin;
-      A[minIndex] = swapValue;
+
+      // check to see if pointer element needs to be swapped
+      // if so, send to swap method
+      if (i != minIndex) {
+        int previousMin = pointerVal;
+        A[i] = currentMin;
+        A[minIndex] = previousMin;
+      }
+
     }
+
+    // prints out array
+    for (int i = 0; i < A.length; i++) {
+      System.out.print(A[i] + " ");
+    }
+
   }
 
 }
